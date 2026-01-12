@@ -18,7 +18,6 @@ export default function HeroSection() {
         <Badge
           variant={"secondary"}
           className="
-              
               relative px-6 py-2 text-base font-medium
              bg-white rounded-full group-hover:bg-gray-900 transition-colors duration-200"
         >
@@ -29,7 +28,7 @@ export default function HeroSection() {
         </Badge>
       </div>
       <h1 className="font-bold py-6 text-center">
-        Tansform lengthy PDF into{" "}
+        Transform lengthy PDF into{" "}
         <span className="relative inline-block">
           <span className="relative z-10 px-2">Smart</span>
           <span

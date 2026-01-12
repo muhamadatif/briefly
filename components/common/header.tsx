@@ -1,7 +1,7 @@
 import React from "react";
 import { FileText } from "lucide-react";
-import { Button } from "../ui/button";
 import NavLink from "./nav-link";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   const isLoggedIn = false;
@@ -17,20 +17,38 @@ export default function Header() {
       </div>
       <div className="flex lg:justify-center gap-4 lg:gap-12 lg:items-center">
         <NavLink href="/#pricing">Pricing</NavLink>
-        {isLoggedIn && <NavLink href="/dashboard">Your Summeries</NavLink>}
+        <SignedIn>
+          <NavLink href="/dashboard">Your Summeries</NavLink>
+        </SignedIn>
       </div>
       <div className="flex lg:justify-end lg:flex-1">
-        {isLoggedIn ? (
+        <SignedIn>
           <div className="flex gap-2 items-center">
             <NavLink href="/upload">Upload a PDF</NavLink>
             <div>Pro</div>
-            <Button>User</Button>
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: {
+                    // RESET any default button styling first
+                    userButtonPopoverActionButton:
+                      "text-black bg-transparent hover:bg-gray-100",
+
+                    // SPECIFIC styling
+                    userButtonPopoverActionButton__manageAccount:
+                      "text-blue-600 hover:bg-blue-50",
+
+                    userButtonPopoverActionButton__signOut:
+                      "text-white bg-red-500 hover:bg-red-600 rounded-md font-semibold",
+                  },
+                }}
+              />
+            </SignedIn>
           </div>
-        ) : (
-          <div>
-            <NavLink href="/sign-in">Sign In</NavLink>
-          </div>
-        )}
+        </SignedIn>
+        <SignedOut>
+          <NavLink href="/sign-in">Sign In</NavLink>
+        </SignedOut>
       </div>
     </nav>
   );

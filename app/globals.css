@@ -4,8 +4,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    var(--font-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -128,9 +129,9 @@
     @apply hover:cursor-pointer;
   }
 
-  button {
+  /* button {
     @apply hover:cursor-pointer bg-rose-600!  hover:bg-rose-700!;
-  }
+  } */
 
   @keyframes gradient-x {
     0%,
@@ -159,29 +160,3 @@
     max-width: 1400px;
   }
 }
-
-/* --background: 0 0% 100%;
---foreground: 222.2 84% 4.9%;
---card: 0 0% 100%;
---card-foreground: 222.2 84% 4.9%;
---popover: 0 0% 100%;
---popover-foreground: 222.2 84% 4.9%;
---primary: 350 89% 60%;
---primary-foreground: 210 40% 98%;
---secondary: 350 33% 96%;
---secondary-foreground: 350 89% 60%;
---muted: 350 33% 96%;
---muted-foreground: 215 25% 27%;
---accent: 350 33% 18%;
---accent-foreground: 350 89% 60%;
---destructive: 350 89% 50%;
---destructive-foreground: 210 40% 98%;
---border: 350 33% 90%;
---input: 350 33% 90%;
---ring: 350 89% 60%;
---radius: 0.5rem;
---chart-1: 12 76% 61%;
---chart-2: 173 58% 39%;
---chart-3: 197 37% 24%;
---chart-4: 43 74% 66%;
---chart-5: 27 87% 67%; */
