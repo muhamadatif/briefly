@@ -5,6 +5,7 @@ import {
   storePdfSummaryAction,
 } from "@/actions/upload-actions";
 import { useUploadThing } from "@/utils/uploadthing";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 import z from "zod";
@@ -28,6 +29,7 @@ const schema = z.object({
 export default function UploadForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
     onClientUploadComplete: () => {
       console.log("uploaded successfully");
@@ -103,6 +105,7 @@ export default function UploadForm() {
             description: "Your PDF has been successfully summarized and saved",
           });
           formRef.current?.reset();
+          router.push(`/summaries/${storeResult.data.id}`);
         }
       }
       // redirect to the [id] summary page
@@ -112,6 +115,8 @@ export default function UploadForm() {
       console.log(error);
 
       formRef.current?.reset();
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
