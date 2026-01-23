@@ -1,3 +1,4 @@
+import { SUMMARY_SYSTEM_PROMPT } from "@/utils/prompts";
 import OpenAI from "openai";
 
 const client = new OpenAI({
@@ -14,25 +15,26 @@ export async function generateSummaryFromOpenAi(pdfText: string) {
         : pdfText;
 
     const response = await client.chat.completions.create({
-      model: "gpt-4o-mini", // Or your preferred model
+      model: "gpt-4o-mini",
       messages: [
         {
           role: "system",
-          content:
-            "You are a helpful assistant that creates engaging summaries with emojis and markdown formatting.",
+          content: SUMMARY_SYSTEM_PROMPT,
         },
         {
           role: "user",
-          content: `Transform this document into an engaging, easy-to-read summary with contextually relevant emojis and proper markdown formatting:\n\n${truncatedText}`,
+          content: `Transform this document into an engaging, easy-to-read summary with contextually relevant emojis and proper markdown formatting:\n\n${truncatedText}
+                `,
         },
       ],
       temperature: 0.7,
-      max_tokens: 1500,
+      max_tokens: 500,
     });
-
     return response.choices[0].message.content;
   } catch (error: any) {
     if (error?.status === 429) {
+      console.log(error);
+
       throw new Error("Rate limit exceeded. Please try again later.");
     }
     if (error?.status === 401) {
