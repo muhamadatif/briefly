@@ -10,6 +10,7 @@ export const parseSection = (section: string) => {
   let currentPoint = "";
   content.forEach((line, index) => {
     const trimmedLine = line.trim();
+    // if (trimmedLine.startsWith("•")) {
     if (trimmedLine.startsWith("-")) {
       if (currentPoint) points.push(currentPoint.trim());
       currentPoint = trimmedLine;

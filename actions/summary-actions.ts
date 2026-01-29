@@ -2,7 +2,6 @@
 
 import { getDbConnection } from "@/lib/db";
 import { currentUser } from "@clerk/nextjs/server";
-import { log } from "console";
 import { revalidatePath } from "next/cache";
 
 export async function deleteSummaryAction({
@@ -17,7 +16,6 @@ export async function deleteSummaryAction({
       throw new Error("User not found");
     }
     const sql = await getDbConnection();
-    log;
     const result = await sql`
     DELETE FROM pdf_summaries
     WHERE id = ${summaryId} AND user_id = ${userId}

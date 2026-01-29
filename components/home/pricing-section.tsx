@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
+import { pricingPlans } from "@/utils/constants";
 import { ArrowRight, CheckIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 type PriceType = {
   name: string;
@@ -13,36 +13,6 @@ type PriceType = {
   priceId: string;
 };
 
-const plans = [
-  {
-    name: "Basic",
-    price: 9,
-    description: "Perfect for occasional use",
-    items: [
-      "5 PDF summeries per month",
-      "Standard processing speed",
-      "Email support",
-    ],
-    id: "basic",
-    paymentLink: "",
-    priceId: "",
-  },
-  {
-    name: "Pro",
-    price: 19,
-    description: "For professionals and teams",
-    items: [
-      "Unlimited PDF summeries",
-      "Priority processing",
-      "24/7 priority support",
-      "Markdown Export",
-    ],
-    id: "pro",
-    paymentLink: "",
-    priceId: "",
-  },
-];
-
 export default function PricingSection() {
   return (
     <section className="relative overflow-hidden" id="pricing">
@@ -53,7 +23,7 @@ export default function PricingSection() {
           </h2>
         </div>
         <div className="relative flex justify-center flex-col lg:flex-row items-center lg:items-stretch gap-8">
-          {plans.map((plan) => (
+          {pricingPlans.map((plan) => (
             <PricingCard key={plan.id} {...plan} />
           ))}
         </div>
@@ -75,7 +45,7 @@ const PricingCard = ({
       <div
         className={cn(
           "relative flex flex-col h-full gap-4 lg:gap-8 z-10 p-8 rounded-xl border-[1px] border-gray-500/20",
-          id === "pro" && "border-rose-500 gap-5 border-2"
+          id === "pro" && "border-rose-500 gap-5 border-2",
         )}
       >
         <div className="flex justify-between items-center gap-4">
@@ -109,7 +79,7 @@ const PricingCard = ({
                text-white border-2 py-2`,
               id === "pro"
                 ? "border-rose-900"
-                : "border-rose-100 from-rose-400 to-rose-500"
+                : "border-rose-100 from-rose-400 to-rose-500",
             )}
           >
             Buy Now <ArrowRight size={18} />

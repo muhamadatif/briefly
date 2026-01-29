@@ -1,9 +1,20 @@
 import BgGradient from "@/components/common/bg-gradient";
 import UploadForm from "@/components/upload/upload-form";
 import UploadHeader from "@/components/upload/upload-header";
-import React from "react";
+import { hasReachedUploadLimit } from "@/lib/user";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
-export default function page() {
+export default async function Page() {
+  const user = await currentUser();
+  if (!user?.id) {
+    redirect("/sign-in");
+  }
+  const userId = user.id;
+  const { hasReachedLimit } = await hasReachedUploadLimit(userId);
+  if (hasReachedLimit) {
+    redirect("/dashboard");
+  }
   return (
     <section className="min-h-screen">
       <BgGradient />

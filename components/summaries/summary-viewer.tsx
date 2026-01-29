@@ -26,6 +26,7 @@ export default function SummaryViewer({ summary }: { summary: string }) {
     setCurrentSection(Math.min(Math.max(index, 0), sections.length - 1));
 
   const sections = summary
+    // .split("\n# ")
     .split("\n#")
     .map((section) => section.trim())
     .filter(Boolean)

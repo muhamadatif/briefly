@@ -2,7 +2,7 @@ import BgGradient from "@/components/common/bg-gradient";
 import SourceInfo from "@/components/summaries/source-info";
 import SummaryHeader from "@/components/summaries/summary-header";
 import SummaryViewer from "@/components/summaries/summary-viewer";
-import { getSummayById } from "@/lib/summaries";
+import { getSummaryById } from "@/lib/summaries";
 import { FileText } from "lucide-react";
 import { notFound } from "next/navigation";
 
@@ -10,7 +10,7 @@ export default async function SummaryPage(props: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await props.params;
-  const summary = await getSummayById(id);
+  const summary = await getSummaryById(id);
   if (!summary) {
     notFound();
   }
