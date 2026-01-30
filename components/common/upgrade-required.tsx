@@ -25,7 +25,7 @@ export default function UpgradeRequired() {
             className="text-lg leading-8 text-gray-600 border-2 border-rose-200 bg-white/50
           backdrop-blur-xs rounded-lg p-6 border-dashed max-w-xl"
           >
-            You need to upgrafe to the Basic Plan or the Pro Plan to access this
+            You need to upgrade to the Basic Plan or the Pro Plan to access this
             feature 💖
           </p>
           <Button

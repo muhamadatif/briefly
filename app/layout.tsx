@@ -3,7 +3,6 @@ import { Source_Sans_3 as FontSans } from "next/font/google";
 import "./globals.css";
 
 import Header from "@/components/common/header";
-import Footer from "@/components/common/footer";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 
@@ -31,7 +30,7 @@ export default function RootLayout({
           <div className="relative flex min-h-dvh flex-col">
             <Header />
             <main className="flex-1">{children}</main>
-            <Footer />
+            {/* <Footer /> */}
           </div>
           <Toaster />
         </body>

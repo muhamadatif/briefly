@@ -12,8 +12,8 @@ async function Layout({ children }: { children: React.ReactNode }) {
   const hasActiveSubscription = await hasActivePlan(
     user.emailAddresses?.[0]?.emailAddress,
   );
-
-  if (!hasActiveSubscription) {
+  // TODO: add this !
+  if (hasActiveSubscription) {
     return <UpgradeRequired />;
   }
   return <>{children}</>;
